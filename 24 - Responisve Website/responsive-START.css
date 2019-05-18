@@ -8,7 +8,234 @@ button {
   padding: 10px 20px;
 }
 
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+}
+
 img {
   max-width: 100%;
 }
+
+.top {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-areas: 
+    "hero hero cta1"
+    "hero hero cta2"
+}
+
+.hero {
+  grid-area: hero;
+
+  min-height: 400px;
+  background: white url(images/taco.jpg);
+  background-size: cover;
+  background-position: bottom right;
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+}
+
+.hero > * {
+  background-color: var(--yellow);
+  padding: 5px;
+}
+
+.cta {
+  background-color: var(--yellow);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+}
+
+.cta p {
+  margin: 0;
+}
+
+.cta1 {
+  grid-area: cta1;
+  /* background-color: #7700ff; */
+}
+
+.cta2 {
+  grid-area: cta2;
+  /* background-color: #34ca48; */
+}
+
+.price {
+  font-size: 60px;
+  font-weight: 300;
+}
+
+
+/* Navigation */
+
+.menu ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.menu a {
+  background-color: var(--yellow);
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: var(--black);
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+[aria-controls="menu-list"] {
+  display: none;
+}
+
+/* Features */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+.feature {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid white;
+  text-align: center;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+.feature .icon {
+  font-size: 50px;
+}
+
+.feature p {
+  color: rgba(0,0,0,0.5);
+}
+
+/* About section */
+
+.about {
+  background-color: #fff;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  align-items: center;
+}
+
+/* Gallery */
+
+.gallery {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+}
+
+.gallery img {
+  width: 100%;
+}
+
+.gallery h2 {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-gap: 20px;
+  align-items: center;
+}
+
+.gallery h2:before,
+.gallery h2:after {
+  display: block;
+  content: "";
+  height: 10px;
+  background: linear-gradient(to left, var(--yellow),
+    transparent);
+}
+.gallery h2:after {
+  background: linear-gradient(to right, var(--yellow),
+    transparent);
+}
+
+/* Responsive */
+
+
+@media (max-width: 1000px) {
+  .menu {
+    order: -1;
+    perspective: 800px;
+  }
+
+  [aria-controls="menu-list"] {
+    display: block;
+    margin: 0 0 10px 0; 
+  }
+
+  .menu ul {
+    max-height: 0;
+    transform: rotateX(90deg);
+    transition: all 0.5s;
+    overflow: hidden;
+  }
+
+  [aria-expanded="true"] ~ ul {
+    display: grid;
+    max-height: 500px;
+    transform: rotateX(0);
+  }
+
+  [aria-expanded="false"] .close {
+    display: none;
+  }
+
+  [aria-expanded="true"] .close {
+    display: inline-block;
+  }
+
+  [aria-expanded="true"] .open {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .top {
+    grid-template-areas: 
+    "hero hero"
+    "cta1 cta2"
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .top {
+    grid-template-areas: 
+      "hero"
+      "cta1"
+      "cta2"
+  }
+}
+
+
+
+
+
+
+
+
 
